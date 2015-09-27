@@ -202,7 +202,6 @@ public class Hand {
 			}
 			ScoreHand(eHandStrength.FourOfAKind, CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank().getRank(), 0,
 					thiskicker);
-			// TODO: Figure out kicker thing
 		}
 
 		// Full House
@@ -214,8 +213,22 @@ public class Hand {
 						.get(eCardNo.SecondCard.getCardNo()).getRank()
 						&& CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank() == CardsInHand
 								.get(eCardNo.FifthCard.getCardNo()).getRank())) {
-			ScoreHand(eHandStrength.FullHouse, CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank().getRank(),
-					CardsInHand.get(eCardNo.FifthCard.getCardNo()).getRank().getRank(), 0);
+
+			// Figure out which position three of a kind and pair are in, set
+			// high and low card value
+			int highnum;
+			int lownum;
+
+			if (CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank() == CardsInHand
+					.get(eCardNo.ThirdCard.getCardNo()).getRank()) {
+				highnum = CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank().getRank();
+				lownum = CardsInHand.get(eCardNo.FourthCard.getCardNo()).getRank().getRank();
+			} else {
+				highnum = CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank().getRank();
+				lownum = CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank().getRank();
+			}
+
+			ScoreHand(eHandStrength.FullHouse, highnum, lownum, 0);
 		}
 
 		// Flush
