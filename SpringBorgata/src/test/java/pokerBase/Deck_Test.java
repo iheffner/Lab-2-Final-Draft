@@ -8,8 +8,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import pokerEnums.eRank;
+import pokerEnums.eSuit;
+
 public class Deck_Test {
 
+	Deck testDeck;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -20,18 +25,20 @@ public class Deck_Test {
 
 	@Before
 	public void setUp() throws Exception {
+		testDeck = new Deck();
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		testDeck = null;
 	}
 
 	@Test
 	public void TestFullDeck() {
-		//	I put this test in so it would pass...
-		//TODO: Code a unit test to make sure calling the deck constructor passes back 52 cards in a deeck.
-		
-		assertTrue(1==1);
+		//Make sure 52 cards are dealt (in two ways)
+		assertTrue(testDeck.getCards().size() == 52);
+		assertTrue(testDeck.getTotalCards() == 52);
 	}
+	
 
 }

@@ -30,6 +30,12 @@ public final class Card {
 	 * @param suit
 	 * @param rank
 	 */
+	
+	public Card(eSuit suit, eRank rank) {
+		Suit = suit; 
+		Rank = rank; 
+	}
+	
 	public Card(eSuit suit, eRank rank, int CardNbr ) {
 		Suit = suit; 
 		Rank = rank; 
